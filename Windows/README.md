@@ -1,7 +1,7 @@
 # Prerequisite
 Below contains the required knowledge needed before starting on shellcoding:
 1. Assembly
-2. C or Python
+2. Any high level programming language
 3. Reverse engineering
 4. Windows API
 
@@ -16,13 +16,13 @@ Below contains the required knowledge needed before starting on shellcoding:
 
 
 # Software Used
-IDE: Codeblocks - http://www.codeblocks.org/
+**IDE**: Codeblocks - http://www.codeblocks.org/
 
-Assembler: FASM - https://flatassembler.net/
+**Assembler**: FASM - https://flatassembler.net/
 
-Text editor: Sublime Text - https://www.sublimetext.com/
+**Text editor**: Sublime Text - https://www.sublimetext.com/
 
-Disassembler/Debugger: IDA - https://www.hex-rays.com/products/ida/
+**Disassembler/Debugger**: IDA - https://www.hex-rays.com/products/ida/
 
 
 # Steps to create shellcode
