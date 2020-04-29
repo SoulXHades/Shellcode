@@ -17,8 +17,11 @@ Below contains the required knowledge needed before starting on shellcoding:
 
 # Software Used
 IDE: Codeblocks - http://www.codeblocks.org/
+
 Assembler: FASM - https://flatassembler.net/
+
 Text editor: Sublime Text - https://www.sublimetext.com/
+
 Disassembler/Debugger: IDA - https://www.hex-rays.com/products/ida/
 
 
@@ -40,10 +43,10 @@ Any version of IDA can be used to debug the compiled assembly code. You can also
 To debug assembly code, you can use the debugger to run and see where did the program crashes. Alternatively, you can set breakpoints and analyze the registers just like doing reverse engineering.
 
 ## Obtain opcode
-Opcode can easily be obtained from IDA in "Hex View-1" tab (see Figure below). Copy and pasting it into your C program. To modify the shellcode for use quickly, use "Replace all" in notepad to replace space with "\x".
+Opcode can easily be obtained from IDA in "Hex View-1" tab where the fonts are green (see Figure below). Copy and pasting it into your C program. To modify the shellcode for use quickly, use "Replace all" in notepad to replace space with "\x".
 
 <p align="center">
-  <img src="README%20Images/opcodes.png" width="300" title="Opcode example in IDA">
+  <img src="README%20Images/opcodes.png" title="Opcode example in IDA">
 </p>
 
 ## Add shellcode into a high level language
