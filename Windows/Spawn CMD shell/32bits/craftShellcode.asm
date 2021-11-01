@@ -3,7 +3,7 @@ use32
 entry start
 
 start:
-	push eax 							; Save all registers
+	push eax 				; Save all registers
 	push ebx
 	push ecx
 	push edx
