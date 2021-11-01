@@ -13,6 +13,7 @@ Below contains the required knowledge needed before starting on shellcoding:
 5. https://www.linkedin.com/pulse/write-windows-shellcode-beginners-part-3-final-abdel-harbi/
 6. http://evilcode-pentest.blogspot.com/2016/05/write-windows-shellcode-for-beginners.html?m=1
 7. https://idafchev.github.io/exploit/2017/09/26/writing_windows_shellcode.html
+8. https://www.unknowncheats.me/forum/general-programming-and-reversing/401590-windows-dll-loader.html
 
 
 # Software Used
